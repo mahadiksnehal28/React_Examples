@@ -1,26 +1,29 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-const lakeList = [
-  { id: 1, name: "talao pali", place: "Thane" },
-  { id: 1, name: "pawai lake", place: "Pawai" }
-];
-
-function App({ lakes }) {
-  return (
-    <div>
-      {lakes.map((lake, index) => (
-        <div id={index.toString()}>
-          <h2> lakename {lake.name} </h2>
-          <p> Location: {lake.place} </p>
-          <hr />
-        </div>
-      ))}
-    </div>
-  );
+function Lake({ name }) {
+  return <h2>welcome to {name}</h2>;
 }
 
-ReactDOM.render(<App lakes={lakeList}></App>, document.getElementById("root"));
+function SkiResort({ namer }) {
+  return <h2>welcome to {namer}</h2>;
+}
+
+function App(props) {
+  return (
+    <div>
+      {props.season === "Summer" ? (
+        <Lake name="Pawai lake"></Lake>
+      ) : props.season === "winter" ? (
+        <SkiResort namer="manali ski resort"></SkiResort>
+      ) : (
+        <h2>"select winter or summer"</h2>
+      )}
+    </div>
+  ); //  {
+}
+
+ReactDOM.render(<App season="anything"></App>, document.getElementById("root"));
 
 // function Hello({library,message,number}) {
 //  // console.log(props)
