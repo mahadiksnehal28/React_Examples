@@ -1,21 +1,26 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-function Lake({ lakename }) {
-  return <p>name of the lake: {lakename}</p>;
-}
+const lakeList = [
+  { id: 1, name: "talao pali", place: "Thane" },
+  { id: 1, name: "pawai lake", place: "Pawai" }
+];
 
-function App() {
+function App({ lakes }) {
   return (
     <div>
-      <Lake lakename="talao Pali" />
-      <Lake lakename="Dombivli talao Pali" />
-      <Lake lakename="Powai Lake" />
+      {lakes.map((lake, index) => (
+        <div id={index.toString()}>
+          <h2> lakename {lake.name} </h2>
+          <p> Location: {lake.place} </p>
+          <hr />
+        </div>
+      ))}
     </div>
   );
 }
 
-ReactDOM.render(<App></App>, document.getElementById("root"));
+ReactDOM.render(<App lakes={lakeList}></App>, document.getElementById("root"));
 
 // function Hello({library,message,number}) {
 //  // console.log(props)
