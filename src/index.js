@@ -1,25 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import ReactDOM from "react-dom";
 
-function Lake({ name }) {
-  return <h2>welcome to {name}</h2>;
-}
 
-function SkiResort({ namer }) {
-  return <h2>welcome to {namer}</h2>;
-}
 
 function App(props) {
+  var[status,changeStatus]=useState("open");
   return (
-    <div>
-      {props.season === "Summer" ? (
-        <Lake name="Pawai lake"></Lake>
-      ) : props.season === "winter" ? (
-        <SkiResort namer="manali ski resort"></SkiResort>
-      ) : (
-        <h2>"select winter or summer"</h2>
-      )}
-    </div>
+   <div>
+     <p> Status : {status}</p>
+ 
+     <button onClick={()=>changeStatus("closed") } >
+     closed
+     </button>
+     <button onClick={()=>changeStatus("Open") } >
+     Open
+     </button>
+     </div>
   ); //  {
 }
 
@@ -42,3 +38,7 @@ ReactDOM.render(<App season="anything"></App>, document.getElementById("root"));
 // <Hello library="React liberary" message="have fun!" number={4}></Hello>,
 //   document.getElementById("root")
 //   );
+
+var[,second]=["a","b"];
+
+console.log(second);
