@@ -2,23 +2,32 @@
 import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom";
 
-function CheckBox() {
-  var [checked, setChecked] = useState(false);
+function App() {
+  var [first, setfirstName] = useState("");
+  var [second, setSecondName] = useState("");
+
   useEffect(() => {
-    alert("useeffect function");
-  });
+    console.log(`First : ${first}`);
+  }, [first]);
+  useEffect(() => {
+    console.log(`Second : ${second}`);
+  }, [second]);
   return (
-    <div>
-      <input
-        type="checkbox"
-        value={checked}
-        onChange={() => setChecked((checked = !checked))}
-      />
-      {checked ? "Checked" : "not checked"}
-    </div>
+    <>
+      <label>
+        Favourite name :
+        <input value={first} onChange={(e) => setfirstName(e.target.value)} />
+      </label>
+      <br />
+      <hr />
+      <label>
+        second Favourite name :
+        <input value={second} onChange={(e) => setSecondName(e.target.value)} />
+      </label>
+    </>
   );
 }
-ReactDOM.render(<CheckBox />, document.getElementById("root"));
+ReactDOM.render(<App />, document.getElementById("root"));
 
 //********/Multiple useStateds Example******
 // import React, { useState } from "react";
